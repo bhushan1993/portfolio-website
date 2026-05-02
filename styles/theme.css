@@ -1,0 +1,68 @@
+/* Design tokens (hooked up to Tailwind via `@theme inline`) */
+
+:root {
+  /* Figma-inspired dark portfolio theme */
+  --bg: #11071f;
+  --surface: #1a0b2e;
+  --surface-2: #251c31;
+  --nav: #1a0836;
+
+  /* Text */
+  --text: #ffffff;
+  --text-muted: #ccd6f6;
+
+  /* UI */
+  --border: #2b0b3a;
+
+  /* Brand / accents */
+  --primary: #7127ba;
+  --primary-foreground: #ffffff;
+  --accent: #9857d3;
+  --link: #1877f2;
+
+  /* Glows / gradients */
+  --gradient-primary: linear-gradient(90deg, #4f228d 0%, #7127ba 55%, #9857d3 100%);
+  --gradient-surface: linear-gradient(180deg, #251c31 0%, #2c1250 100%);
+  --glow-radial: radial-gradient(circle, rgb(163 98 255 / 20%) 0%, rgb(17 7 31 / 0%) 70%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11071f;
+    --surface: #1a0b2e;
+    --surface-2: #251c31;
+    --nav: #1a0836;
+
+    --text: #ffffff;
+    --text-muted: #ccd6f6;
+
+    --border: #2b0b3a;
+
+    --primary: #7127ba;
+    --primary-foreground: #ffffff;
+    --accent: #9857d3;
+    --link: #1877f2;
+
+    --gradient-primary: linear-gradient(90deg, #4f228d 0%, #7127ba 55%, #9857d3 100%);
+    --gradient-surface: linear-gradient(180deg, #251c31 0%, #2c1250 100%);
+    --glow-radial: radial-gradient(circle, rgb(163 98 255 / 20%) 0%, rgb(17 7 31 / 0%) 70%);
+  }
+}
+
+@theme inline {
+  /* Tailwind v4 tokens */
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+
+  --color-muted: var(--text-muted);
+  --color-border: var(--border);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-link: var(--link);
+}
+
