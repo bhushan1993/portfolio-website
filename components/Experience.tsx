@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "framer-motion";
 import {
   useCallback,
   useEffect,
@@ -410,9 +411,35 @@ function CompanyGroupEntry({
   toggle: (id: string) => void;
 }) {
   const labelId = `${item.id}-company-heading`;
+  const groupRef = useRef<HTMLDivElement>(null);
+  const rolesListRef = useRef<HTMLUListElement>(null);
+  const roleCount = item.roles.length;
+  const pointDivisor = Math.max(roleCount - 1, 1);
+  const { scrollYProgress } = useScroll({
+    target: groupRef,
+    offset: ["start 90%", "end 35%"],
+  });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 180,
+    damping: 28,
+    mass: 0.25,
+  });
+  const [progressValue, setProgressValue] = useState(0);
+  useMotionValueEvent(smoothProgress, "change", (v) => {
+    const clamped = Math.min(Math.max(v, 0), 1);
+    setProgressValue((prev) => (Math.abs(prev - clamped) < 0.001 ? prev : clamped));
+  });
+  const glowTop = useTransform(
+    smoothProgress,
+    (v) => `${Math.min(Math.max(v, 0), 1) * 100}%`,
+  );
+  const nearestPointIndex = Math.min(
+    roleCount - 1,
+    Math.max(0, Math.round(progressValue * pointDivisor)),
+  );
 
   return (
-    <div>
+    <div ref={groupRef}>
       <div className="flex gap-4">
         <LogoAvatar
           company={item.company}
@@ -429,17 +456,56 @@ function CompanyGroupEntry({
 
       <div className="relative mt-6 pl-3 md:pl-4">
         <div
-          className="absolute bottom-4 left-[21px] top-[6px] w-px bg-accent md:left-[25px]"
+          className="absolute bottom-4 left-[21px] top-[6px] w-[3px] bg-violet-300/35 md:left-[25px]"
           aria-hidden
-        />
+        >
+          <motion.div
+            className="absolute left-0 top-0 h-full w-[3px] origin-top bg-gradient-to-b from-violet-200/85 via-violet-300/95 to-violet-500"
+            style={{ scaleY: smoothProgress }}
+          />
+          <motion.div
+            className="absolute left-1/2 w-[4px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-300/85 blur-[1px]"
+            style={{
+              top: glowTop,
+            }}
+          />
+          <motion.div
+            className="absolute left-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-300"
+            style={{
+              top: glowTop,
+              boxShadow: "0 0 14px rgba(196, 145, 255, 0.98), 0 0 32px rgba(146, 88, 255, 0.65)",
+            }}
+          />
+        </div>
 
-        <ul className="space-y-10" aria-labelledby={labelId}>
-          {item.roles.map((role) => (
+        <ul ref={rolesListRef} className="space-y-10" aria-labelledby={labelId}>
+          {item.roles.map((role, index) => (
             <li key={role.id} className="relative pl-10 md:pl-12">
-              <span
-                className="absolute left-[17px] top-2 z-10 h-2 w-2 -translate-x-1/2 rounded-full bg-muted ring-2 ring-surface md:left-[10px]"
+              <motion.span
+                className="absolute left-[17px] top-2 z-10 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-muted ring-2 ring-surface md:left-[10px]"
                 aria-hidden
-              />
+              >
+                <motion.span
+                  className="absolute inset-0 rounded-full bg-violet-300"
+                  animate={{
+                    opacity: index === nearestPointIndex ? 1 : 0.24,
+                    scale: index === nearestPointIndex ? 1 : 0.72,
+                    boxShadow:
+                      index === nearestPointIndex
+                        ? "0 0 8px rgba(196,145,255,0.9), 0 0 16px rgba(146,88,255,0.55)"
+                        : "0 0 0 rgba(0,0,0,0)",
+                  }}
+                  transition={{ duration: 0.28, ease: "easeOut" }}
+                />
+                <motion.span
+                  className="absolute inset-[-3px] rounded-full bg-violet-300/45 blur-[2px]"
+                  animate={{
+                    opacity: index === nearestPointIndex ? 0.75 : 0,
+                    scale: index === nearestPointIndex ? 1.08 : 0.75,
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                />
+              </motion.span>
               <RoleBlock
                 role={role}
                 organization={item.company}
@@ -482,7 +548,7 @@ export function Experience() {
   const { toggle, isExpanded } = useExpandedMap();
 
   return (
-    <section id="experience" className="scroll-mt-24 pt-24">
+    <section id="experience" className="scroll-mt-10 pt-20">
       <h2 className="text-2xl font-bold text-foreground md:text-3xl">
         Experience
       </h2>

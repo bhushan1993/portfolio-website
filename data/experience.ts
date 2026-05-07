@@ -39,29 +39,34 @@ export type ExperienceItem = ExperienceSingle | ExperienceCompanyGroup;
 
 export const experienceItems: ExperienceItem[] = [
   {
-    kind: "single",
-    id: "synechron-lead",
+    kind: "companyGroup",
+    id: "synechron",
     logo: "/synechron_logo.jpg",
-    title: "Lead Technology",
     company: "Synechron",
-    employmentType: "Full-time",
-    dateRange: "Apr 2024 – Present",
-    duration: "2 yrs 2 mos",
-    location: "India",
-    workMode: "Hybrid",
-    description:
-      `• Led engineering initiatives across cloud-native platforms, enhancing scalability and performance.
+    employmentSummary: "Full-time · Apr 2024 – Present · 2 yrs 2 mos",
+    roles: [
+      {
+        id: "synechron-lead",
+        title: "Lead Technology",
+        dateRange: "Apr 2024 – Present",
+        duration: "2 yrs 2 mos",
+        location: "India",
+        workMode: "Hybrid",
+        description:
+          `• Led engineering initiatives across cloud-native platforms, enhancing scalability and performance.
 • Mentored teams on modern frontend stacks and robust API design, ensuring best practices.
 • Drove the adoption of innovative technologies for enterprise clients, improving overall project outcomes.`,
-    skills: [
-      "React",
-      "Node.js",
-      "AWS",
-      "System Design",
-      "Team Leadership",
-      "TypeScript",
+        skills: [
+          "React",
+          "Node.js",
+          "AWS",
+          "System Design",
+          "Team Leadership",
+          "TypeScript",
+        ],
+        highlightCount: 2,
+      },
     ],
-    highlightCount: 2,
   },
   {
     kind: "companyGroup",
