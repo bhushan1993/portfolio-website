@@ -16,7 +16,7 @@ const imageVariant = {
 
 export function Hero() {
   return (
-    <section className="relative py-20">
+    <section className="relative py-28">
       <motion.div
         variants={imageVariant}
         initial="hidden"
@@ -24,17 +24,7 @@ export function Hero() {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
         className={`${styles.profileWrap} pointer-events-none absolute bottom-0 right-0 hidden h-[36rem] w-[30rem] md:block`}
       >
-        {/* <div className="relative h-full w-full">
-          <Image
-            src="/portfolio-image-no-bg.png"
-            alt="Bhushan Shirude portrait"
-            width={1200}
-            height={1200}
-            sizes="(min-width: 768px) 30rem, 0px"
-            priority
-            className={styles.profileImage}
-          />
-        </div> */}
+       
       </motion.div>
 
       <motion.div

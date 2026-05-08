@@ -548,9 +548,10 @@ export function Experience() {
   const { toggle, isExpanded } = useExpandedMap();
 
   return (
-    <section id="experience" className="scroll-mt-10 pt-20">
+    <section id="experience" className="mx-auto max-w-6xl scroll-mt-10 pt-20 pb-10">
       <h2 className="text-2xl font-bold text-foreground md:text-3xl">
-        Experience
+      <p className="text-sm font-semibold tracking-[0.2em] text-accent">EXPERIENCE</p>
+        Where I've Worked
       </h2>
       <p className="mt-2 max-w-2xl text-sm text-muted">
         Roles and progression — descriptions expand on demand.

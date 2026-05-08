@@ -1,19 +1,22 @@
 import { Experience } from "@/components/Experience";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
+import { Contact } from "@/components/Contact";
+import { Projects } from "@/components/Projects";
+import { Skills } from "@/components/Skills";
 
 const sectionLinks = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
-  { href: "#blog", label: "Blog" },
-  { href: "#contact", label: "Contact" }, 
+  // { href: "#blog", label: "Blog" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Home() {
   return (
-    <div className="min-h-screen font-sans text-foreground bg-background [background-image:var(--glow-radial)]">
+    <div className="min-h-screen overflow-hidden font-sans text-foreground bg-background [background-image:var(--glow-radial)]">
       <header className="fixed top-0 z-50 w-full border-b border-border/80 bg-[var(--nav)]/80 backdrop-blur">
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
           <a
@@ -34,17 +37,32 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="mx-auto flex w-full max-w-6xl flex-col pt-24 pb-20">
+
+      <main className="relative mx-auto flex w-full flex-col pt-24 pb-20">
+        <div
+          className="
+    pointer-events-none
+    absolute
+    inset-0
+    z-0
+    bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)]
+    bg-[size:60px_60px]
+  "
+        />
         <Hero />
 
         <About />
 
+        <Projects />
+
+        <Skills />
+
         <Experience />
 
-        <section id="projects" className="pt-24" />
-        <section id="contact" className="pt-24" />
-        <section id="blog" className="pt-24" />
+        <Contact />
+
       </main>
+
     </div>
   );
 }

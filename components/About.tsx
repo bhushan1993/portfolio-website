@@ -11,8 +11,10 @@ const kpis = [
 
 export function About() {
   return (
-    <section id="about" className="scroll-mt-10 pt-24">
+    <section id="about" className="mx-auto max-w-6xl scroll-mt-10 pt-24 pb-8">
+      
       <h2 className="mx-auto max-w-4xl text-center text-4xl font-bold leading-tight md:text-5xl">
+        <p className="text-sm font-semibold tracking-[0.2em] text-accent">ABOUT</p>
         <span className="block">Full-Stack Engineer</span>
         <span className="block bg-gradient-to-r from-[#e5484d] to-accent bg-clip-text text-transparent">
           Crafting Scalable Digital Products
