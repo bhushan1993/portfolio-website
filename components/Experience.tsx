@@ -482,7 +482,7 @@ function CompanyGroupEntry({
           {item.roles.map((role, index) => (
             <li key={role.id} className="relative pl-10 md:pl-12">
               <motion.span
-                className="absolute left-[17px] top-2 z-10 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-muted ring-2 ring-surface md:left-[10px]"
+                className="absolute left-[10px] top-2 z-10 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-muted ring-2 ring-surface md:left-[10px]"
                 aria-hidden
               >
                 <motion.span
@@ -548,16 +548,19 @@ export function Experience() {
   const { toggle, isExpanded } = useExpandedMap();
 
   return (
-    <section id="experience" className="mx-auto max-w-6xl scroll-mt-10 pt-20 pb-10">
-      <h2 className="text-2xl font-bold text-foreground md:text-3xl">
-      <p className="text-sm font-semibold tracking-[0.2em] text-accent">EXPERIENCE</p>
+    <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 pt-20 pb-10 px-4 sm:px-6">
+      <h2 data-reveal className="text-2xl font-bold text-foreground md:text-3xl">
+        <p className="text-sm font-semibold tracking-[0.2em] text-accent">EXPERIENCE</p>
         Where I've Worked
       </h2>
-      <p className="mt-2 max-w-2xl text-sm text-muted">
+      <p data-reveal className="mt-2 max-w-2xl text-sm text-muted">
         Roles and progression — descriptions expand on demand.
       </p>
 
-      <div className="mt-8 rounded-xl border border-border/80 bg-surface p-6 md:p-8">
+      <div
+        data-reveal
+        className="mt-8 rounded-xl border border-border/80 bg-[#07030d]/60 p-6 backdrop-blur-sm md:p-8"
+      >
         <div className="divide-y divide-border/60">
           {experienceItems.map((item) => (
             <div key={item.id} className="py-8 first:pt-0 last:pb-0">

@@ -74,8 +74,9 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article
+      data-reveal
       style={style}
-      className="group relative min-h-[295px] overflow-hidden rounded-xl border border-border/80 bg-[#07030d]/70 p-6 shadow-[0_24px_70px_-58px_rgba(0,0,0,0.9)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-accent/80 hover:shadow-[0_28px_90px_-62px_rgba(152,87,211,0.95)]"
+      className="group relative min-h-[295px] overflow-hidden rounded-xl border border-border/80 bg-[#07030d]/70 p-6 shadow-[0_24px_70px_-58px_rgba(0,0,0,0.9)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-accent/80 hover:shadow-[0_28px_90px_-62px_rgba(152,87,211,0.95)]"
     >
       <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--project-from),var(--project-to))] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(255,255,255,0.12),transparent_34%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -110,10 +111,13 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-6xl relative scroll-mt-24 pt-14">
+    <section
+      id="projects"
+      className="section-anchor mx-auto max-w-6xl relative pt-14 px-4 sm:px-6"
+    >
       {/* <div className="pointer-events-none absolute inset-x-1/2 top-12 z-0 h-[calc(100%-2rem)] w-screen -translate-x-1/2 bg-[linear-gradient(rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:58px_58px] opacity-45 [mask-image:radial-gradient(circle_at_50%_28%,black,transparent_72%)]" /> */}
 
-      <div className="relative z-10 mx-auto max-w-3xl text-center">
+      <div data-reveal className="relative z-10 mx-auto max-w-3xl text-center">
         <p className="text-sm font-semibold text-accent">
           <span className="tracking-[0.2em]">PROJECTS</span>
         </p>

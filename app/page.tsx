@@ -4,6 +4,8 @@ import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
+import { Navbar } from "@/components/Navbar";
+import { ScrollEffects } from "@/components/ScrollEffects";
 
 const sectionLinks = [
   { href: "#about", label: "About" },
@@ -17,25 +19,8 @@ const sectionLinks = [
 export default function Home() {
   return (
     <div className="min-h-screen overflow-hidden font-sans text-foreground bg-background [background-image:var(--glow-radial)]">
-      <header className="fixed top-0 z-50 w-full border-b border-border/80 bg-[var(--nav)]/80 backdrop-blur">
-        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-          <a
-            href="#"
-            className="bg-gradient-to-r from-[#e5484d] to-accent bg-clip-text text-3xl font-bold text-transparent"
-          >
-            BS
-          </a>
-          <ul className="flex items-center gap-6 text-sm font-medium text-muted">
-            {sectionLinks.map((item) => (
-              <li key={item.href}>
-                <a href={item.href} className="transition-colors hover:text-accent">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
+      <Navbar links={sectionLinks} />
+      <ScrollEffects />
 
 
       <main className="relative mx-auto flex w-full flex-col pt-24 pb-20">

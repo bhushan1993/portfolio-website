@@ -140,7 +140,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="relative left-1/2 mt-16 w-screen max-w-none -translate-x-1/2 scroll-mt-24 overflow-visible "
+      className="section-anchor relative left-1/2 mt-16 w-screen max-w-none -translate-x-1/2 overflow-visible"
     >
       <div className="pointer-events-none absolute -inset-x-16 -inset-y-32">
         <video
@@ -158,13 +158,15 @@ export function Skills() {
 
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,rgba(152,87,211,0.24),rgba(17,7,31,0.18)_48%,transparent_84%)]" />
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-6">
-        <p className="text-sm font-semibold tracking-[0.2em] text-accent">SKILLS</p>
-        <h2 className="mx-auto max-w-4xl text-center text-4xl font-bold leading-tight md:text-5xl">
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-4 sm:px-6">
+        <p data-reveal className="text-sm font-semibold tracking-[0.2em] text-accent">
+          SKILLS
+        </p>
+        <h2 data-reveal className="mx-auto max-w-4xl text-center text-4xl font-bold leading-tight md:text-5xl">
           TECH STACK
         </h2>
 
-        <div className="mt-16 hidden flex-col items-center gap-3 md:flex">
+        <div data-reveal className="mt-16 hidden flex-col items-center gap-3 md:flex">
           {skillRows.map((row, index) => (
             <div key={index} className="flex justify-center gap-3">
               {row.map((skill) => (
@@ -174,7 +176,10 @@ export function Skills() {
           ))}
         </div>
 
-        <div className="mt-12 grid w-full max-w-[420px] grid-cols-3 justify-items-center gap-3 sm:grid-cols-4 md:hidden">
+        <div
+          data-reveal
+          className="mt-12 grid w-full max-w-[420px] grid-cols-3 justify-items-center gap-3 sm:grid-cols-4 md:hidden"
+        >
           {allSkills.map((skill) => (
             <SkillCard key={skill.name} skill={skill} />
           ))}

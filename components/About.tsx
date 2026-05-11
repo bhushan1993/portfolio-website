@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Image from "next/image";
 
 const kpis = [
@@ -11,9 +12,11 @@ const kpis = [
 
 export function About() {
   return (
-    <section id="about" className="mx-auto max-w-6xl scroll-mt-10 pt-24 pb-8">
-      
-      <h2 className="mx-auto max-w-4xl text-center text-4xl font-bold leading-tight md:text-5xl">
+    <section
+      id="about"
+      className="section-anchor mx-auto max-w-6xl pt-24 pb-8 px-4 sm:px-6"
+    >
+      <h2 data-reveal className="mx-auto max-w-4xl text-center text-4xl font-bold leading-tight md:text-5xl">
         <p className="text-sm font-semibold tracking-[0.2em] text-accent">ABOUT</p>
         <span className="block">Full-Stack Engineer</span>
         <span className="block bg-gradient-to-r from-[#e5484d] to-accent bg-clip-text text-transparent">
@@ -22,7 +25,18 @@ export function About() {
       </h2>
 
       <div className="mt-10 grid items-start gap-8 md:grid-cols-2 md:gap-x-12 md:gap-y-8">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/80 bg-surface shadow-[0_0_0_1px_rgba(152,87,211,0.12),0_25px_80px_-60px_rgba(152,87,211,0.55)]">
+        <article
+          data-reveal
+          className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-border/80 bg-[#07030d]/70 shadow-[0_24px_70px_-58px_rgba(0,0,0,0.9)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-accent/80 hover:shadow-[0_28px_90px_-62px_rgba(152,87,211,0.95)]"
+          style={
+            {
+              "--project-from": "rgba(152, 87, 211, 0.34)",
+              "--project-to": "rgba(17, 7, 31, 0.94)",
+            } as CSSProperties
+          }
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--project-from),var(--project-to))] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(255,255,255,0.12),transparent_34%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <Image
             src="/pexels-peaky-29445974.jpg"
             alt="Full-stack engineering workspace"
@@ -30,10 +44,10 @@ export function About() {
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/25 via-transparent to-transparent" />
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background/35 via-transparent to-transparent" />
+        </article>
 
-        <div className="space-y-4 text-sm leading-7 text-muted">
+        <div data-reveal className="space-y-4 text-sm leading-7 text-muted">
           <p>
             I&apos;m a Software Engineer based in Pune with 10+ years of
             experience designing and developing modern web applications,
@@ -59,7 +73,7 @@ export function About() {
           </p>
         </div>
 
-        <div className="relative">
+        <div data-reveal className="relative">
           <div className="absolute -inset-8 -z-10 bg-[radial-gradient(circle_at_30%_20%,rgba(152,87,211,0.35),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(113,39,186,0.25),transparent_60%)] blur-2xl" />
 
           <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-gradient-to-b from-surface to-surface-2 shadow-[0_0_0_1px_rgba(152,87,211,0.15),0_25px_80px_-60px_rgba(152,87,211,0.65)]">
@@ -86,16 +100,25 @@ export function About() {
 
         <div className="grid grid-cols-2 gap-4">
           {kpis.map((kpi) => (
-            <div
+            <article
               key={kpi.label}
-              className="rounded-xl border border-border/80 bg-surface/70 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/50"
+              data-reveal
+              className="group relative overflow-hidden rounded-xl border border-border/80 bg-[#07030d]/70 p-4 shadow-[0_24px_70px_-58px_rgba(0,0,0,0.9)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-accent/80 hover:shadow-[0_28px_90px_-62px_rgba(152,87,211,0.95)]"
+              style={
+                {
+                  "--project-from": "rgba(229, 72, 77, 0.24)",
+                  "--project-to": "rgba(17, 7, 31, 0.94)",
+                } as CSSProperties
+              }
             >
-              <div className="text-2xl font-bold text-foreground">
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--project-from),var(--project-to))] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(255,255,255,0.12),transparent_34%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="relative z-10 text-2xl font-bold text-foreground">
                 {kpi.value}
               </div>
 
-              <div className="mt-1 text-xs text-muted">{kpi.label}</div>
-            </div>
+              <div className="relative z-10 mt-1 text-xs text-muted">{kpi.label}</div>
+            </article>
           ))}
         </div>
       </div>
