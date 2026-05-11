@@ -62,7 +62,7 @@ export function Navbar({ links }: { links: NavLink[] }) {
   }, [open]);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-border/80">
+    <header className="fixed top-0 z-50 w-full">
       <div className="bg-[var(--nav)]/95 md:bg-[var(--nav)]/80 md:backdrop-blur">
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           <a
